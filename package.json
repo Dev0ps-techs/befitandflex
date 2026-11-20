@@ -1,0 +1,12 @@
+{
+  "name": "befitandflex",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Be Fit & Flex — activewear website (static, GitHub Pages, Shopify-ready)",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "preview": "PREVIEW=1 node src/build.mjs",
+    "serve": "npx --yes serve docs"
+  }
+}
