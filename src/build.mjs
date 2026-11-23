@@ -134,7 +134,7 @@ ${body}
       </ul>
     </div>
   </div>
-  <div class="wrap footer__bottom"><p>© <span data-year>2026</span> ${site.name}. All rights reserved.</p>${payPills()}</div>
+  <div class="wrap footer__bottom"><p>© <span data-year>2026</span> ${site.name}. All rights reserved.</p><p class="footer__credit">Website built by DevOps Engineer Lewis</p>${payPills()}</div>
 </footer>
 <a class="wa-float" href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${icon('whatsapp')}</a>
 ${drawer(r)}
