@@ -323,3 +323,7 @@ details p { margin: 12px 0 0; }
 .hero__copy p { margin-bottom: .9em; }
 .hero__copy b { color: #fff; font-weight: 500; }
 .hero__tagline { font-family: var(--display); font-style: italic; font-size: 1.3rem; color: var(--gold-2) !important; margin-top: 1.1em; }
+
+.footer .contacts { margin-top: 18px; gap: 8px; }
+.contacts a { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; word-break: break-all; }
+.contacts .icon { color: var(--gold); }

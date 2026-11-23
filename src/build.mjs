@@ -119,7 +119,12 @@ ${body}
     <div><h3>Join the movement</h3>
       <p class="footer__small">Be first to know about new drops and pre-order offers.</p>
       ${newsForm('news-footer')}
-      <div class="social"><a href="${site.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${icon('instagram')}</a><a href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener" aria-label="WhatsApp">${icon('whatsapp')}</a><a href="mailto:${site.email}" aria-label="Email">${icon('mail')}</a></div>
+      <div class="social"><a href="${site.instagram}" target="_blank" rel="noopener" aria-label="Instagram ${site.instagramHandle}">${icon('instagram')}</a><a href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener" aria-label="WhatsApp">${icon('whatsapp')}</a><a href="mailto:${site.email}" aria-label="Email">${icon('mail')}</a></div>
+      <ul class="contacts">
+        <li><a href="${site.instagram}" target="_blank" rel="noopener">${icon('instagram')}<span>${site.instagramHandle}</span></a></li>
+        <li><a href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener">${icon('whatsapp')}<span>${site.phoneDisplay}</span></a></li>
+        <li><a href="mailto:${site.email}">${icon('mail')}<span>${site.email}</span></a></li>
+      </ul>
     </div>
   </div>
   <div class="wrap footer__bottom"><p>© <span data-year>2026</span> ${site.name}. All rights reserved.</p>${payPills()}</div>
@@ -325,7 +330,7 @@ function help(r) {
 <section class="section section--tight"><div class="wrap narrow">
   <div class="faq">${C.faq.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${q}${icon('plus')}</summary><p>${a}</p></details>`).join('')}</div>
   <div class="contact" id="contact"><h2>Contact us</h2><p>We usually reply within a day.</p>
-    <div class="row"><a class="btn btn--gold" href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener">${icon('whatsapp')}<span>WhatsApp ${site.phoneDisplay}</span></a><a class="btn btn--ghost-dark" href="mailto:${site.email}">${icon('mail')}<span>${site.email}</span></a></div></div>
+    <div class="row"><a class="btn btn--gold" href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener">${icon('whatsapp')}<span>WhatsApp ${site.phoneDisplay}</span></a><a class="btn btn--ghost-dark" href="mailto:${site.email}">${icon('mail')}<span>${site.email}</span></a><a class="btn btn--ghost-dark" href="${site.instagram}" target="_blank" rel="noopener">${icon('instagram')}<span>${site.instagramHandle}</span></a></div></div>
 </div></section>`;
 }
 

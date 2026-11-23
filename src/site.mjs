@@ -19,10 +19,11 @@ export const site = {
   // Shown at checkout. Real card payment happens on Shopify once the store is connected.
   payments: ['Visa', 'Mastercard', 'Apple Pay', 'Google Pay', 'Shop Pay', 'Cash on delivery (UAE)'],
   email: 'letchancengassa@gmail.com',
-  phone: '+971552807783',
-  phoneDisplay: '(+971) 55 280 7783',
-  whatsapp: '971552807783',
-  instagram: 'https://www.instagram.com/leechance_ngassa/',
+  phone: '+971552630650',
+  phoneDisplay: '(+971) 55 263 0650',
+  whatsapp: '971552630650',
+  instagram: 'https://www.instagram.com/befitandflex/',
+  instagramHandle: '@befitandflex',
   sister: { name: 'Wealthy Mind & Body', url: 'https://wealthymindandbody.com' },
 };
 
