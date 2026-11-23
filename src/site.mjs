@@ -26,11 +26,18 @@ export const site = {
   sister: { name: 'Wealthy Mind & Body', url: 'https://wealthymindandbody.com' },
 };
 
+export const genders = [
+  { id: 'women', name: 'Women' },
+  { id: 'men', name: 'Men' },
+];
+
 export const categories = [
-  { id: 'sets', name: 'Sculpt Sets', blurb: 'Half-zip sports bra and high-rise leggings, made to match.' },
-  { id: 'jackets', name: 'Zip Jackets', blurb: 'Fitted, thumbhole zip jackets paired with biker shorts.' },
-  { id: 'tracksuits', name: 'Tracksuits', blurb: 'Embroidered tracksuits for training, travel and everyday style.' },
-  { id: 'tees', name: 'Tees & Tanks', blurb: 'Soft, breathable everyday essentials with our signature logo.' },
+  { id: 'women-sets', gender: 'women', name: 'Sculpt Sets', blurb: 'Half-zip sports bra and high-rise leggings, made to match.' },
+  { id: 'women-jackets', gender: 'women', name: 'Zip Jackets', blurb: 'Fitted, thumbhole zip jackets paired with biker shorts.' },
+  { id: 'women-tracksuits', gender: 'women', name: 'Tracksuits', blurb: 'Cropped varsity tracksuits with gold embroidery.' },
+  { id: 'women-tanks', gender: 'women', name: 'Tank Tops', blurb: 'Fitted, breathable racerback tanks with our signature logo.' },
+  { id: 'men-tracksuits', gender: 'men', name: 'Tracksuits', blurb: 'Hooded zip tracksuits for training, travel and everyday style.' },
+  { id: 'men-tees', gender: 'men', name: 'T-Shirts', blurb: 'Soft, breathable everyday tees with our FF emblem and logo.' },
 ];
 
 // Colour name → swatch colour. Add any new colour used by a product here.
@@ -53,7 +60,7 @@ export const products = [
   {
     slug: 'sculpt-set',
     name: 'Sculpt Set',
-    category: 'sets',
+    category: 'women-sets',
     price: null,
     status: 'coming-soon',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -70,7 +77,7 @@ export const products = [
   {
     slug: 'flex-zip-jacket-set',
     name: 'Flex Zip Jacket Set',
-    category: 'jackets',
+    category: 'women-jackets',
     price: null,
     status: 'coming-soon',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -87,7 +94,7 @@ export const products = [
   {
     slug: 'varsity-cropped-tracksuit',
     name: 'Varsity Cropped Tracksuit',
-    category: 'tracksuits',
+    category: 'women-tracksuits',
     price: null,
     status: 'coming-soon',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -104,8 +111,7 @@ export const products = [
   {
     slug: 'classic-hooded-tracksuit',
     name: 'Classic Hooded Tracksuit',
-    category: 'tracksuits',
-    unisex: true,
+    category: 'men-tracksuits',
     price: null,
     status: 'coming-soon',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -115,14 +121,14 @@ export const products = [
       { name: 'White', images: ['hooded-white-front.webp', 'hooded-white-back.webp'] },
     ],
     description:
-      'A unisex hooded zip tracksuit with contrast piping, a gold embroidered FF crest on the chest and leg, and Be Fit & Flex in script across the back. Relaxed, breathable and made for training days, travel and everything in between.',
-    details: ['Hooded zip jacket with contrast piping', 'Be Fit & Flex script across the back', 'Gold embroidered FF crest on chest and joggers', 'Straight-leg joggers with side piping and pockets', 'Unisex fit'],
+      'A men’s hooded zip tracksuit with contrast piping, a gold embroidered FF crest on the chest and leg, and Be Fit & Flex in script across the back. Relaxed, breathable and made for training days, travel and everything in between.',
+    details: ['Hooded zip jacket with contrast piping', 'Be Fit & Flex script across the back', 'Gold embroidered FF crest on chest and joggers', 'Straight-leg joggers with side piping and pockets', 'Regular men’s fit'],
     shopify: '',
   },
   {
     slug: 'logo-racer-tank',
     name: 'Logo Racer Tank',
-    category: 'tees',
+    category: 'women-tanks',
     price: null,
     status: 'coming-soon',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -138,49 +144,46 @@ export const products = [
   {
     slug: 'ff-emblem-tee',
     name: 'FF Emblem Tee',
-    category: 'tees',
-    unisex: true,
+    category: 'men-tees',
     price: null,
     status: 'coming-soon',
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colours: [
       { name: 'White', images: ['emblem-tee-white.webp'] },
       { name: 'Black', images: ['emblem-tee-black.webp'] },
     ],
     description:
-      'A clean crew-neck tee with our gold embroidered FF emblem on the chest. Soft, breathable and easy to wear — the everyday essential with a touch of luxury.',
-    details: ['Gold embroidered FF emblem', 'Classic crew neck, short sleeves', 'Soft, breathable stretch cotton feel', 'Unisex fit'],
+      'A clean men’s crew-neck tee with our gold embroidered FF emblem on the chest. Soft, breathable and easy to wear — the everyday essential with a touch of luxury.',
+    details: ['Gold embroidered FF emblem', 'Classic crew neck, short sleeves', 'Soft, breathable stretch cotton feel', 'Regular men’s fit'],
     shopify: '',
   },
   {
     slug: 'signature-logo-tee',
     name: 'Signature Logo Tee',
-    category: 'tees',
-    unisex: true,
+    category: 'men-tees',
     price: null,
     status: 'coming-soon',
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colours: [{ name: 'White', images: ['signature-tee-white.webp'] }],
     description:
-      'A crisp white crew-neck tee with Be Fit & Flex printed boldly across the chest. Wear the movement — at the gym, on the go or at brunch.',
-    details: ['Bold centred Be Fit & Flex print', 'Classic crew neck, short sleeves', 'Soft, breathable fabric', 'Unisex fit'],
+      'A crisp white men’s crew-neck tee with Be Fit & Flex printed boldly across the chest. Wear the movement — at the gym, on the go or at brunch.',
+    details: ['Bold centred Be Fit & Flex print', 'Classic crew neck, short sleeves', 'Soft, breathable fabric', 'Regular men’s fit'],
     shopify: '',
   },
   {
     slug: 'chest-logo-tee',
     name: 'Chest Logo Tee',
-    category: 'tees',
-    unisex: true,
+    category: 'men-tees',
     price: null,
     status: 'coming-soon',
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     colours: [
       { name: 'Black', images: ['chest-tee-black.webp'] },
       { name: 'White', images: ['chest-tee-white.webp'] },
     ],
     description:
-      'A fitted crew-neck tee with a subtle Be Fit & Flex logo on the chest. Minimal, breathable and stretchy — the tee you will reach for every day.',
-    details: ['Subtle Be Fit & Flex chest logo', 'Fitted crew neck, short sleeves', 'Breathable stretch fabric', 'Unisex fit'],
+      'A fitted men’s crew-neck tee with a subtle Be Fit & Flex logo on the chest. Minimal, breathable and stretchy — the tee you will reach for every day.',
+    details: ['Subtle Be Fit & Flex chest logo', 'Fitted crew neck, short sleeves', 'Breathable stretch fabric', 'Regular men’s fit'],
     shopify: '',
   },
 ];

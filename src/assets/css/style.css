@@ -299,3 +299,19 @@ details p { margin: 12px 0 0; }
 @media (max-width: 860px) { .join { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .cat__body { padding: 14px; } .cat__body p:not(.cat__cols) { display: none; } .card__foot { flex-direction: column; align-items: flex-start; gap: 6px; } .pdp__buy .btn, .drawer .btn { width: 100%; } }
 .footer .pay { display: flex; justify-content: flex-end; }
+
+/* women / men grouping */
+.gsec + .gsec { margin-top: clamp(40px, 6vw, 72px); }
+.gsec__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.gsec__head h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 0; }
+.cat__g { font-size: .7rem !important; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep) !important; margin: 0 0 4px !important; }
+.gblock { scroll-margin-top: 110px; }
+.gblock[hidden] { display: none; }
+.gblock__title { font-size: clamp(2.4rem, 5vw, 3.6rem); margin: 8px 0 28px; }
+.gblock__title::after { content: ''; display: block; width: 60px; height: 2px; background: var(--gold); margin-top: 14px; }
+.block__title { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-bottom: 4px; }
+.filters__sep { width: 1px; background: var(--line); margin: 0 6px; }
+.chip--g { font-weight: 600; }
+.footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr 1.3fr; }
+@media (max-width: 1000px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr 1fr; } .footer__grid > div:first-child, .footer__grid > div:last-child { grid-column: 1 / -1; } .filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: -16px; padding-inline: 16px; scrollbar-width: none; } .chip { flex: none; } }

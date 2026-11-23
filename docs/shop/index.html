@@ -24,7 +24,7 @@
 <header class="header">
   <div class="wrap header__in">
     <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button>
-    <nav class="nav" id="nav" aria-label="Main"><ul><li><a href="../shop/" aria-current="page">Shop</a></li><li><a href="../shop/#sets">Sculpt Sets</a></li><li><a href="../shop/#jackets">Zip Jackets</a></li><li><a href="../shop/#tracksuits">Tracksuits</a></li><li><a href="../shop/#tees">Tees & Tanks</a></li><li><a href="../about/">Our Story</a></li><li><a href="../size-guide/">Size Guide</a></li><li><a href="../help/">Help</a></li></ul></nav>
+    <nav class="nav" id="nav" aria-label="Main"><ul><li><a href="../shop/" aria-current="page">Shop all</a></li><li><a href="../shop/#women">Women</a></li><li><a href="../shop/#men">Men</a></li><li><a href="../about/">Our Story</a></li><li><a href="../size-guide/">Size Guide</a></li><li><a href="../help/">Help</a></li></ul></nav>
     <a class="brand" href="../" aria-label="Be Fit & Flex home"><img src="../assets/img/ff-logo.webp" width="859" height="912" alt="" class="brand__mark" fetchpriority="high" decoding="async"><span>Be Fit <i>&amp;</i> Flex</span></a>
     <div class="header__end"><a class="btn btn--gold btn--sm header__shop" href="../shop/"><span>Pre-order</span></a><button class="basket-btn" data-basket-open aria-label="Open basket"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="basket-btn__n" data-basket-count>0</span></button></div>
   </div>
@@ -34,118 +34,124 @@
 <section class="page-head"><div class="wrap"><p class="kicker">Coming soon · Pre-order now</p><h1>Shop the collection</h1><p class="lead">Premium activewear that is breathable, stretchable and made for your lifestyle. Reserve your size today.</p></div></section>
 <section class="section section--tight">
   <div class="wrap" data-grid>
-    <div class="filters" role="group" aria-label="Filter by category">
-      <button class="chip is-on" data-filter="all">All</button><button class="chip" data-filter="sets">Sculpt Sets</button><button class="chip" data-filter="jackets">Zip Jackets</button><button class="chip" data-filter="tracksuits">Tracksuits</button><button class="chip" data-filter="tees">Tees & Tanks</button>
+    <div class="filters" role="group" aria-label="Filter">
+      <button class="chip is-on" data-filter="all">All</button><button class="chip chip--g" data-filter="women">Women</button><button class="chip chip--g" data-filter="men">Men</button><span class="filters__sep" aria-hidden="true"></span><button class="chip" data-filter="women-sets">Women · Sculpt Sets</button><button class="chip" data-filter="women-jackets">Women · Zip Jackets</button><button class="chip" data-filter="women-tracksuits">Women · Tracksuits</button><button class="chip" data-filter="women-tanks">Women · Tank Tops</button><button class="chip" data-filter="men-tracksuits">Men · Tracksuits</button><button class="chip" data-filter="men-tees">Men · T-Shirts</button>
     </div>
-    <div class="block" data-cat="sets" id="sets">
-      <div class="block__head"><div><h2>Sculpt Sets</h2><p>Half-zip sports bra and high-rise leggings, made to match.</p></div>
+    <div class="gblock" data-gender="women" id="women"><h2 class="gblock__title">Women</h2><div class="block" data-cat="women-sets" data-gender="women" id="women-sets">
+      <div class="block__head"><div><h3 class="block__title">Sculpt Sets</h3><p>Half-zip sports bra and high-rise leggings, made to match.</p></div>
       <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#111111" title="Black"></span>Black</li><li><span class="sw" style="--c:#7d1a2b" title="Burgundy"></span>Burgundy</li><li><span class="sw" style="--c:linear-gradient(135deg, #f7d117 50%, #f26a10 50%)" title="Sunset"></span>Sunset</li></ul></div></div>
       <div class="grid">
-<article class="card" data-reveal style="--d:0s" data-cat="sets">
+<article class="card" data-reveal style="--d:0s" data-cat="women-sets">
   <a class="card__img" href="../products/sculpt-set/">
     <img src="../assets/img/products/sculpt-black.webp" srcset="../assets/img/products/sculpt-black-800.webp 800w, ../assets/img/products/sculpt-black.webp 1226w" sizes="(min-width: 1000px) 25vw, 50vw" width="1226" height="1283" alt="Sculpt Set — Black" loading="lazy" decoding="async">
     <img src="../assets/img/products/sculpt-burgundy.webp" srcset="../assets/img/products/sculpt-burgundy-800.webp 800w, ../assets/img/products/sculpt-burgundy.webp 1227w" sizes="(min-width: 1000px) 25vw, 50vw" width="1227" height="1281" alt="Sculpt Set — Burgundy" class="card__alt" loading="lazy" decoding="async">
     <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Sculpt Sets</p>
+    <p class="card__cat">Women · Sculpt Sets</p>
     <h3><a href="../products/sculpt-set/">Sculpt Set</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="3 colours: Black, Burgundy, Sunset"><span class="sw" style="--c:#111111" title="Black"></span><span class="sw" style="--c:#7d1a2b" title="Burgundy"></span><span class="sw" style="--c:linear-gradient(135deg, #f7d117 50%, #f26a10 50%)" title="Sunset"></span></span></div>
   </div>
-</article></div></div><div class="block" data-cat="jackets" id="jackets">
-      <div class="block__head"><div><h2>Zip Jackets</h2><p>Fitted, thumbhole zip jackets paired with biker shorts.</p></div>
+</article></div></div><div class="block" data-cat="women-jackets" data-gender="women" id="women-jackets">
+      <div class="block__head"><div><h3 class="block__title">Zip Jackets</h3><p>Fitted, thumbhole zip jackets paired with biker shorts.</p></div>
       <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#d9c9b3" title="Sand"></span>Sand</li><li><span class="sw" style="--c:#e85bb4" title="Pink"></span>Pink</li><li><span class="sw" style="--c:#0e8b8c" title="Teal"></span>Teal</li></ul></div></div>
       <div class="grid">
-<article class="card" data-reveal style="--d:0s" data-cat="jackets">
+<article class="card" data-reveal style="--d:0s" data-cat="women-jackets">
   <a class="card__img" href="../products/flex-zip-jacket-set/">
     <img src="../assets/img/products/zip-sand-front.webp" width="653" height="1199" alt="Flex Zip Jacket Set — Sand" loading="lazy" decoding="async">
     <img src="../assets/img/products/zip-sand-back.webp" width="652" height="1199" alt="Flex Zip Jacket Set — Sand" class="card__alt" loading="lazy" decoding="async">
     <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Zip Jackets</p>
+    <p class="card__cat">Women · Zip Jackets</p>
     <h3><a href="../products/flex-zip-jacket-set/">Flex Zip Jacket Set</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="3 colours: Sand, Pink, Teal"><span class="sw" style="--c:#d9c9b3" title="Sand"></span><span class="sw" style="--c:#e85bb4" title="Pink"></span><span class="sw" style="--c:#0e8b8c" title="Teal"></span></span></div>
   </div>
-</article></div></div><div class="block" data-cat="tracksuits" id="tracksuits">
-      <div class="block__head"><div><h2>Tracksuits</h2><p>Embroidered tracksuits for training, travel and everyday style.</p></div>
-      <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#111111" title="Black"></span>Black</li><li><span class="sw" style="--c:#b5121b" title="Red"></span>Red</li><li><span class="sw" style="--c:#f7f6f2" title="White"></span>White</li><li><span class="sw" style="--c:#1f3a9e" title="Royal Blue"></span>Royal Blue</li></ul></div></div>
+</article></div></div><div class="block" data-cat="women-tracksuits" data-gender="women" id="women-tracksuits">
+      <div class="block__head"><div><h3 class="block__title">Tracksuits</h3><p>Cropped varsity tracksuits with gold embroidery.</p></div>
+      <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#111111" title="Black"></span>Black</li><li><span class="sw" style="--c:#b5121b" title="Red"></span>Red</li><li><span class="sw" style="--c:#f7f6f2" title="White"></span>White</li></ul></div></div>
       <div class="grid">
-<article class="card" data-reveal style="--d:0s" data-cat="tracksuits">
+<article class="card" data-reveal style="--d:0s" data-cat="women-tracksuits">
   <a class="card__img" href="../products/varsity-cropped-tracksuit/">
     <img src="../assets/img/products/varsity-black.webp" srcset="../assets/img/products/varsity-black-800.webp 800w, ../assets/img/products/varsity-black.webp 1199w" sizes="(min-width: 1000px) 25vw, 50vw" width="1199" height="1312" alt="Varsity Cropped Tracksuit — Black" loading="lazy" decoding="async">
     <img src="../assets/img/products/varsity-red.webp" srcset="../assets/img/products/varsity-red-800.webp 800w, ../assets/img/products/varsity-red.webp 1199w" sizes="(min-width: 1000px) 25vw, 50vw" width="1199" height="1312" alt="Varsity Cropped Tracksuit — Red" class="card__alt" loading="lazy" decoding="async">
     <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Tracksuits</p>
+    <p class="card__cat">Women · Tracksuits</p>
     <h3><a href="../products/varsity-cropped-tracksuit/">Varsity Cropped Tracksuit</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="3 colours: Black, Red, White"><span class="sw" style="--c:#111111" title="Black"></span><span class="sw" style="--c:#b5121b" title="Red"></span><span class="sw" style="--c:#f7f6f2" title="White"></span></span></div>
   </div>
-</article>
-<article class="card" data-reveal style="--d:0.06s" data-cat="tracksuits">
-  <a class="card__img" href="../products/classic-hooded-tracksuit/">
-    <img src="../assets/img/products/hooded-black-front.webp" width="765" height="1024" alt="Classic Hooded Tracksuit — Black" loading="lazy" decoding="async">
-    <img src="../assets/img/products/hooded-black-back.webp" width="765" height="1024" alt="Classic Hooded Tracksuit — Black" class="card__alt" loading="lazy" decoding="async">
-    <span class="badge">Coming soon</span><span class="badge badge--alt">Unisex</span>
-  </a>
-  <div class="card__body">
-    <p class="card__cat">Tracksuits</p>
-    <h3><a href="../products/classic-hooded-tracksuit/">Classic Hooded Tracksuit</a></h3>
-    <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="3 colours: Black, Royal Blue, White"><span class="sw" style="--c:#111111" title="Black"></span><span class="sw" style="--c:#1f3a9e" title="Royal Blue"></span><span class="sw" style="--c:#f7f6f2" title="White"></span></span></div>
-  </div>
-</article></div></div><div class="block" data-cat="tees" id="tees">
-      <div class="block__head"><div><h2>Tees & Tanks</h2><p>Soft, breathable everyday essentials with our signature logo.</p></div>
+</article></div></div><div class="block" data-cat="women-tanks" data-gender="women" id="women-tanks">
+      <div class="block__head"><div><h3 class="block__title">Tank Tops</h3><p>Fitted, breathable racerback tanks with our signature logo.</p></div>
       <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#f7f6f2" title="White"></span>White</li><li><span class="sw" style="--c:#111111" title="Black"></span>Black</li></ul></div></div>
       <div class="grid">
-<article class="card" data-reveal style="--d:0s" data-cat="tees">
+<article class="card" data-reveal style="--d:0s" data-cat="women-tanks">
   <a class="card__img" href="../products/logo-racer-tank/">
     <img src="../assets/img/products/tank-white.webp" srcset="../assets/img/products/tank-white-800.webp 800w, ../assets/img/products/tank-white.webp 1086w" sizes="(min-width: 1000px) 25vw, 50vw" width="1086" height="1400" alt="Logo Racer Tank — White" loading="lazy" decoding="async">
     <img src="../assets/img/products/tank-black.webp" srcset="../assets/img/products/tank-black-800.webp 800w, ../assets/img/products/tank-black.webp 1085w" sizes="(min-width: 1000px) 25vw, 50vw" width="1085" height="1400" alt="Logo Racer Tank — Black" class="card__alt" loading="lazy" decoding="async">
     <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Tees & Tanks</p>
+    <p class="card__cat">Women · Tank Tops</p>
     <h3><a href="../products/logo-racer-tank/">Logo Racer Tank</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="2 colours: White, Black"><span class="sw" style="--c:#f7f6f2" title="White"></span><span class="sw" style="--c:#111111" title="Black"></span></span></div>
   </div>
-</article>
-<article class="card" data-reveal style="--d:0.06s" data-cat="tees">
+</article></div></div></div><div class="gblock" data-gender="men" id="men"><h2 class="gblock__title">Men</h2><div class="block" data-cat="men-tracksuits" data-gender="men" id="men-tracksuits">
+      <div class="block__head"><div><h3 class="block__title">Tracksuits</h3><p>Hooded zip tracksuits for training, travel and everyday style.</p></div>
+      <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#111111" title="Black"></span>Black</li><li><span class="sw" style="--c:#1f3a9e" title="Royal Blue"></span>Royal Blue</li><li><span class="sw" style="--c:#f7f6f2" title="White"></span>White</li></ul></div></div>
+      <div class="grid">
+<article class="card" data-reveal style="--d:0s" data-cat="men-tracksuits">
+  <a class="card__img" href="../products/classic-hooded-tracksuit/">
+    <img src="../assets/img/products/hooded-black-front.webp" width="765" height="1024" alt="Classic Hooded Tracksuit — Black" loading="lazy" decoding="async">
+    <img src="../assets/img/products/hooded-black-back.webp" width="765" height="1024" alt="Classic Hooded Tracksuit — Black" class="card__alt" loading="lazy" decoding="async">
+    <span class="badge">Coming soon</span>
+  </a>
+  <div class="card__body">
+    <p class="card__cat">Men · Tracksuits</p>
+    <h3><a href="../products/classic-hooded-tracksuit/">Classic Hooded Tracksuit</a></h3>
+    <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="3 colours: Black, Royal Blue, White"><span class="sw" style="--c:#111111" title="Black"></span><span class="sw" style="--c:#1f3a9e" title="Royal Blue"></span><span class="sw" style="--c:#f7f6f2" title="White"></span></span></div>
+  </div>
+</article></div></div><div class="block" data-cat="men-tees" data-gender="men" id="men-tees">
+      <div class="block__head"><div><h3 class="block__title">T-Shirts</h3><p>Soft, breathable everyday tees with our FF emblem and logo.</p></div>
+      <div class="block__cols"><span class="block__label">Available in</span><ul><li><span class="sw" style="--c:#f7f6f2" title="White"></span>White</li><li><span class="sw" style="--c:#111111" title="Black"></span>Black</li></ul></div></div>
+      <div class="grid">
+<article class="card" data-reveal style="--d:0s" data-cat="men-tees">
   <a class="card__img" href="../products/ff-emblem-tee/">
     <img src="../assets/img/products/emblem-tee-white.webp" srcset="../assets/img/products/emblem-tee-white-800.webp 800w, ../assets/img/products/emblem-tee-white.webp 1337w" sizes="(min-width: 1000px) 25vw, 50vw" width="1337" height="1177" alt="FF Emblem Tee — White" loading="lazy" decoding="async">
     <img src="../assets/img/products/emblem-tee-black.webp" srcset="../assets/img/products/emblem-tee-black-800.webp 800w, ../assets/img/products/emblem-tee-black.webp 1337w" sizes="(min-width: 1000px) 25vw, 50vw" width="1337" height="1176" alt="FF Emblem Tee — Black" class="card__alt" loading="lazy" decoding="async">
-    <span class="badge">Coming soon</span><span class="badge badge--alt">Unisex</span>
+    <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Tees & Tanks</p>
+    <p class="card__cat">Men · T-Shirts</p>
     <h3><a href="../products/ff-emblem-tee/">FF Emblem Tee</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="2 colours: White, Black"><span class="sw" style="--c:#f7f6f2" title="White"></span><span class="sw" style="--c:#111111" title="Black"></span></span></div>
   </div>
 </article>
-<article class="card" data-reveal style="--d:0.12s" data-cat="tees">
+<article class="card" data-reveal style="--d:0.06s" data-cat="men-tees">
   <a class="card__img" href="../products/signature-logo-tee/">
     <img src="../assets/img/products/signature-tee-white.webp" srcset="../assets/img/products/signature-tee-white-800.webp 800w, ../assets/img/products/signature-tee-white.webp 1337w" sizes="(min-width: 1000px) 25vw, 50vw" width="1337" height="1177" alt="Signature Logo Tee — White" loading="lazy" decoding="async">
     
-    <span class="badge">Coming soon</span><span class="badge badge--alt">Unisex</span>
+    <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Tees & Tanks</p>
+    <p class="card__cat">Men · T-Shirts</p>
     <h3><a href="../products/signature-logo-tee/">Signature Logo Tee</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="1 colours: White"><span class="sw" style="--c:#f7f6f2" title="White"></span></span></div>
   </div>
 </article>
-<article class="card" data-reveal style="--d:0.18s" data-cat="tees">
+<article class="card" data-reveal style="--d:0.12s" data-cat="men-tees">
   <a class="card__img" href="../products/chest-logo-tee/">
     <img src="../assets/img/products/chest-tee-black.webp" srcset="../assets/img/products/chest-tee-black-800.webp 800w, ../assets/img/products/chest-tee-black.webp 1337w" sizes="(min-width: 1000px) 25vw, 50vw" width="1337" height="1177" alt="Chest Logo Tee — Black" loading="lazy" decoding="async">
     <img src="../assets/img/products/chest-tee-white.webp" srcset="../assets/img/products/chest-tee-white-800.webp 800w, ../assets/img/products/chest-tee-white.webp 1337w" sizes="(min-width: 1000px) 25vw, 50vw" width="1337" height="1177" alt="Chest Logo Tee — White" class="card__alt" loading="lazy" decoding="async">
-    <span class="badge">Coming soon</span><span class="badge badge--alt">Unisex</span>
+    <span class="badge">Coming soon</span>
   </a>
   <div class="card__body">
-    <p class="card__cat">Tees & Tanks</p>
+    <p class="card__cat">Men · T-Shirts</p>
     <h3><a href="../products/chest-logo-tee/">Chest Logo Tee</a></h3>
     <div class="card__foot"><p class="card__price">Pre-order now</p><span class="sws" aria-label="2 colours: Black, White"><span class="sw" style="--c:#111111" title="Black"></span><span class="sw" style="--c:#f7f6f2" title="White"></span></span></div>
   </div>
-</article></div></div>
+</article></div></div></div>
   </div>
 </section>
 </main>
@@ -156,7 +162,7 @@
       <p>Activewear for women who move with intention.</p>
       <p class="footer__small">Designed by Letchance Ngassa. A sister brand of <a href="https://wealthymindandbody.com" target="_blank" rel="noopener">Wealthy Mind & Body</a>.</p>
     </div>
-    <div><h3>Shop</h3><ul><li><a href="../shop/">All products</a></li><li><a href="../shop/#sets">Sculpt Sets</a></li><li><a href="../shop/#jackets">Zip Jackets</a></li><li><a href="../shop/#tracksuits">Tracksuits</a></li><li><a href="../shop/#tees">Tees & Tanks</a></li></ul></div>
+    <div><h3>Women</h3><ul><li><a href="../shop/#women-sets">Sculpt Sets</a></li><li><a href="../shop/#women-jackets">Zip Jackets</a></li><li><a href="../shop/#women-tracksuits">Tracksuits</a></li><li><a href="../shop/#women-tanks">Tank Tops</a></li></ul></div><div><h3>Men</h3><ul><li><a href="../shop/#men-tracksuits">Tracksuits</a></li><li><a href="../shop/#men-tees">T-Shirts</a></li></ul></div>
     <div><h3>Help</h3><ul><li><a href="../size-guide/">Size guide</a></li><li><a href="../help/">Delivery & returns</a></li><li><a href="../help/#contact">Contact us</a></li><li><a href="../about/">Our story</a></li></ul></div>
     <div><h3>Join the movement</h3>
       <p class="footer__small">Be first to know about new drops and pre-order offers.</p>

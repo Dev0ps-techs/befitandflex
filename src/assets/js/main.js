@@ -42,7 +42,8 @@
     const chips = $$('[data-filter]');
     const apply = (cat) => {
       chips.forEach((c) => c.classList.toggle('is-on', c.dataset.filter === cat));
-      $$('.block', grid).forEach((b) => { b.hidden = cat !== 'all' && b.dataset.cat !== cat; if (!b.hidden) $$('[data-reveal]', b).forEach((x) => x.classList.add('in')); });
+      $$('.block', grid).forEach((b) => { b.hidden = cat !== 'all' && b.dataset.cat !== cat && b.dataset.gender !== cat; if (!b.hidden) $$('[data-reveal]', b).forEach((x) => x.classList.add('in')); });
+      $$('.gblock', grid).forEach((g) => { g.hidden = !$$('.block', g).some((b) => !b.hidden); });
     };
     chips.forEach((c) => c.addEventListener('click', () => { apply(c.dataset.filter); history.replaceState(null, '', c.dataset.filter === 'all' ? location.pathname : '#' + c.dataset.filter); }));
     const fromHash = () => { const h = location.hash.slice(1); apply(chips.some((c) => c.dataset.filter === h) ? h : 'all'); };

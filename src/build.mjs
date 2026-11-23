@@ -37,7 +37,9 @@ const swatch = (n, cls = 'sw') => `<span class="${cls}" style="--c:${hex(n)}" ti
 const catColours = (id) => [...new Set(C.products.filter((p) => p.category === id).flatMap((p) => p.colours.map((c) => c.name)))];
 const payPills = () => `<ul class="pay" aria-label="Payment methods">${site.payments.map((m) => `<li>${m}</li>`).join('')}</ul>`;
 const newsForm = (id, dark = true) => `<form class="news${dark ? '' : ' news--light'}" data-news><label class="sr" for="${id}">Email</label><input id="${id}" type="email" required placeholder="Your email address" autocomplete="email"><button class="btn ${dark ? 'btn--gold' : 'btn--ink'} btn--sm" type="submit"><span>Subscribe</span></button></form>`;
-const catName = (id) => (C.categories.find((c) => c.id === id) || {}).name || '';
+const catOf = (id) => C.categories.find((c) => c.id === id) || {};
+const gName = (g) => (C.genders.find((x) => x.id === g) || {}).name || '';
+const catName = (id) => { const c = catOf(id); return c.name ? `${gName(c.gender)} · ${c.name}` : ''; };
 const buyUrl = (p) => p.shopify || (site.shopifyStore ? site.shopifyStore.replace(/\/$/, '') + '/products/' + p.slug : '');
 
 const I = {
@@ -62,8 +64,8 @@ const icon = (n, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" fill=
 const wa = (text) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
 
 const NAV = [
-  ['shop/', 'Shop', 'shop'],
-  ...C.categories.filter((c) => C.products.some((p) => p.category === c.id)).map((c) => [`shop/#${c.id}`, c.name, '']),
+  ['shop/', 'Shop all', 'shop'],
+  ...C.genders.map((g) => [`shop/#${g.id}`, g.name, '']),
   ['about/', 'Our Story', 'about'],
   ['size-guide/', 'Size Guide', 'size'],
   ['help/', 'Help', 'help'],
@@ -112,7 +114,7 @@ ${body}
       <p>${site.tagline}</p>
       <p class="footer__small">Designed by ${site.founder}. A sister brand of <a href="${site.sister.url}" target="_blank" rel="noopener">${site.sister.name}</a>.</p>
     </div>
-    <div><h3>Shop</h3><ul><li><a href="${r}shop/">All products</a></li>${C.categories.map((c) => `<li><a href="${r}shop/#${c.id}">${c.name}</a></li>`).join('')}</ul></div>
+    ${C.genders.map((g) => `<div><h3>${g.name}</h3><ul>${C.categories.filter((c) => c.gender === g.id).map((c) => `<li><a href="${r}shop/#${c.id}">${c.name}</a></li>`).join('')}</ul></div>`).join('')}
     <div><h3>Help</h3><ul><li><a href="${r}size-guide/">Size guide</a></li><li><a href="${r}help/">Delivery & returns</a></li><li><a href="${r}help/#contact">Contact us</a></li><li><a href="${r}about/">Our story</a></li></ul></div>
     <div><h3>Join the movement</h3>
       <p class="footer__small">Be first to know about new drops and pre-order offers.</p>
@@ -151,7 +153,7 @@ const catTile = (r, c, i) => {
   const cols = catColours(c.id);
   return `<a class="cat" href="${r}shop/#${c.id}" data-reveal style="--d:${i * 0.07}s">
   <div class="cat__img">${pimg(r, p, 0, { sizes: '(min-width: 1000px) 25vw, 50vw' })}</div>
-  <div class="cat__body"><h3>${c.name}</h3><p>${c.blurb}</p>
+  <div class="cat__body"><p class="cat__g">${gName(c.gender)}</p><h3>${c.name}</h3><p>${c.blurb}</p>
   <p class="cat__cols"><span class="sws">${cols.map((n) => swatch(n)).join('')}</span><span>${cols.length} colours</span></p></div>
 </a>`;
 };
@@ -177,8 +179,9 @@ function home(r) {
 <div class="ticker" aria-hidden="true"><div class="ticker__track">${Array(2).fill(['Premium activewear', 'Breathable', 'Four-way stretch', 'Fit for lifestyle', 'Squat-proof', 'Coming soon']).flat().map((w) => `<span>${w}</span>`).join('')}</div></div>
 <section class="section">
   <div class="wrap">
-    <div class="head" data-reveal><div><p class="kicker">Shop by category</p><h2>Four collections. Every colour you love.</h2></div><a class="link" href="${r}shop/">View all ${icon('arrow')}</a></div>
-    <div class="cats">${C.categories.map((c, i) => catTile(r, c, i)).join('')}</div>
+    <div class="head" data-reveal><div><p class="kicker">Shop by category</p><h2>Six collections. Every colour you love.</h2></div><a class="link" href="${r}shop/">View all ${icon('arrow')}</a></div>
+    ${C.genders.map((g) => `<div class="gsec"><div class="gsec__head" data-reveal><h3>${g.name}</h3><a class="link" href="${r}shop/#${g.id}">Shop ${g.name.toLowerCase()} ${icon('arrow')}</a></div>
+    <div class="cats">${C.categories.filter((c) => c.gender === g.id).map((c, i) => catTile(r, c, i)).join('')}</div></div>`).join('')}
   </div>
 </section>
 <section class="section section--ink">
@@ -208,22 +211,23 @@ function home(r) {
 }
 
 function shop(r) {
+  const block = (c) => {
+    const ps = C.products.filter((p) => p.category === c.id);
+    if (!ps.length) return '';
+    const cols = catColours(c.id);
+    return `<div class="block" data-cat="${c.id}" data-gender="${c.gender}" id="${c.id}">
+      <div class="block__head"><div><h3 class="block__title">${c.name}</h3><p>${c.blurb}</p></div>
+      <div class="block__cols"><span class="block__label">Available in</span><ul>${cols.map((n) => `<li>${swatch(n)}${n}</li>`).join('')}</ul></div></div>
+      <div class="grid">${ps.map((p, i) => card(r, p, i)).join('')}</div></div>`;
+  };
   return `
 <section class="page-head"><div class="wrap"><p class="kicker">Coming soon · Pre-order now</p><h1>Shop the collection</h1><p class="lead">Premium activewear that is breathable, stretchable and made for your lifestyle. Reserve your size today.</p></div></section>
 <section class="section section--tight">
   <div class="wrap" data-grid>
-    <div class="filters" role="group" aria-label="Filter by category">
-      <button class="chip is-on" data-filter="all">All</button>${C.categories.map((c) => `<button class="chip" data-filter="${c.id}">${c.name}</button>`).join('')}
+    <div class="filters" role="group" aria-label="Filter">
+      <button class="chip is-on" data-filter="all">All</button>${C.genders.map((g) => `<button class="chip chip--g" data-filter="${g.id}">${g.name}</button>`).join('')}<span class="filters__sep" aria-hidden="true"></span>${C.categories.map((c) => `<button class="chip" data-filter="${c.id}">${gName(c.gender)} · ${c.name}</button>`).join('')}
     </div>
-    ${C.categories.map((c) => {
-      const ps = C.products.filter((p) => p.category === c.id);
-      if (!ps.length) return '';
-      const cols = catColours(c.id);
-      return `<div class="block" data-cat="${c.id}" id="${c.id}">
-      <div class="block__head"><div><h2>${c.name}</h2><p>${c.blurb}</p></div>
-      <div class="block__cols"><span class="block__label">Available in</span><ul>${cols.map((n) => `<li>${swatch(n)}${n}</li>`).join('')}</ul></div></div>
-      <div class="grid">${ps.map((p, i) => card(r, p, i)).join('')}</div></div>`;
-    }).join('')}
+    ${C.genders.map((g) => `<div class="gblock" data-gender="${g.id}" id="${g.id}"><h2 class="gblock__title">${g.name}</h2>${C.categories.filter((c) => c.gender === g.id).map(block).join('')}</div>`).join('')}
   </div>
 </section>`;
 }
