@@ -327,3 +327,14 @@ details p { margin: 12px 0 0; }
 .footer .contacts { margin-top: 18px; gap: 8px; }
 .contacts a { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; word-break: break-all; }
 .contacts .icon { color: var(--gold); }
+
+/* top bar with social contacts */
+.announce { padding: 0; text-transform: none; letter-spacing: 0; }
+.announce__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 38px; }
+.announce__msg { margin: 0; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; }
+.announce__social { list-style: none; margin: 0; padding: 0; display: flex; gap: 18px; }
+.announce__social a { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,255,255,.85); text-decoration: none; font-size: .78rem; transition: color .25s; }
+.announce__social a:hover { color: var(--gold-2); }
+.announce__social .icon { width: 15px; height: 15px; color: var(--gold); }
+@media (max-width: 1180px) { .announce__social span { display: none; } .announce__social .icon { width: 17px; height: 17px; } .announce__social { gap: 14px; } }
+@media (max-width: 560px) { .announce__msg { font-size: .64rem; letter-spacing: .06em; } }

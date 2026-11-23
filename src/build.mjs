@@ -95,7 +95,14 @@ ${base ? `<base href="${base}">` : ''}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="announce">Our first collection is coming soon · <a href="${r}shop/">Pre-order now</a> to reserve your size</div>
+<div class="announce"><div class="wrap announce__in">
+  <p class="announce__msg">Our first collection is coming soon · <a href="${r}shop/">Pre-order now</a> to reserve your size</p>
+  <ul class="announce__social">
+    <li><a href="${site.instagram}" target="_blank" rel="noopener" aria-label="Instagram ${site.instagramHandle}">${icon('instagram')}<span>${site.instagramHandle}</span></a></li>
+    <li><a href="${wa('Hi! I have a question about Be Fit & Flex.')}" target="_blank" rel="noopener" aria-label="WhatsApp ${site.phoneDisplay}">${icon('whatsapp')}<span>${site.phoneDisplay}</span></a></li>
+    <li><a href="mailto:${site.email}" aria-label="Email ${site.email}">${icon('mail')}<span>${site.email}</span></a></li>
+  </ul>
+</div></div>
 <header class="header">
   <div class="wrap header__in">
     <button class="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button>
