@@ -27,73 +27,161 @@ export const site = {
 };
 
 export const categories = [
-  { id: 'sets', name: 'Sets', blurb: 'Matching pieces, styled for you.' },
-  { id: 'jackets', name: 'Jackets & Tops', blurb: 'Fitted layers with thumbholes and zip pockets.' },
-  { id: 'bottoms', name: 'Leggings & Shorts', blurb: 'High-rise, squat-proof and sculpting.' },
-  { id: 'bras', name: 'Sports Bras', blurb: 'Supportive, soft and made to move.' },
+  { id: 'sets', name: 'Sculpt Sets', blurb: 'Half-zip sports bra and high-rise leggings, made to match.' },
+  { id: 'jackets', name: 'Zip Jackets', blurb: 'Fitted, thumbhole zip jackets paired with biker shorts.' },
+  { id: 'tracksuits', name: 'Tracksuits', blurb: 'Embroidered tracksuits for training, travel and everyday style.' },
+  { id: 'tees', name: 'Tees & Tanks', blurb: 'Soft, breathable everyday essentials with our signature logo.' },
 ];
 
 // Colour name → swatch colour. Add any new colour used by a product here.
 export const colourHex = {
   Black: '#111111',
-  Sand: '#d8c7ae',
-  'Sand / Black': 'linear-gradient(135deg, #d8c7ae 50%, #111111 50%)',
-  White: '#f6f4ef',
-  Olive: '#5b6347',
-  Navy: '#1e2a44',
-  Mocha: '#7a5c48',
-  Grey: '#8d8d8d',
-  Pink: '#e3b2b8',
+  Burgundy: '#7d1a2b',
+  Sunset: 'linear-gradient(135deg, #f7d117 50%, #f26a10 50%)',
+  Sand: '#d9c9b3',
+  Pink: '#e85bb4',
+  Teal: '#0e8b8c',
+  Red: '#b5121b',
+  White: '#f7f6f2',
+  'Royal Blue': '#1f3a9e',
 };
 
-// One entry per product. `images` are file names in src/assets/img/products/.
-// `price` in AED (leave null to show "Price coming soon"). `shopify` = the product's Shopify link.
-// `sample: true` marks placeholder items to be replaced by the real catalogue.
+// One entry per design. Each colour has its own photos (file names in src/assets/img/products/).
+// `price` in AED (null shows "Coming soon"). `status: 'coming-soon'` shows the badge and the pre-order button.
+// `shopify` = the product's Shopify link once the store is live.
 export const products = [
   {
-    slug: 'flex-zip-jacket-sand',
-    name: 'Flex Zip Jacket — Sand',
-    category: 'jackets',
-    price: null,
-    colours: ['Sand'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['sample-zip-jacket.webp', 'sample-set.webp'],
-    description:
-      'A fitted, second-skin zip jacket with thumbholes and a high collar. Soft, breathable and stretchy — made for the studio, the walk there and everything after.',
-    details: ['Four-way stretch fabric', 'Thumbhole cuffs', 'Zip pockets', 'Be Fit & Flex embroidered logo'],
-    shopify: '',
-    status: 'coming-soon',
-    sample: true,
-  },
-  {
-    slug: 'ff-biker-shorts-black',
-    name: 'FF Biker Shorts — Black',
-    category: 'bottoms',
-    price: null,
-    colours: ['Black'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['sample-biker-shorts.webp', 'sample-set.webp'],
-    description:
-      'High-waisted, squat-proof biker shorts with the gold FF monogram. Sculpting fit that stays put through every pose.',
-    details: ['High-rise waistband', 'Squat-proof, opaque fabric', 'Gold FF monogram', 'Mid-thigh length'],
-    shopify: '',
-    status: 'coming-soon',
-    sample: true,
-  },
-  {
-    slug: 'signature-flex-set',
-    name: 'Signature Flex Set',
+    slug: 'sculpt-set',
+    name: 'Sculpt Set',
     category: 'sets',
     price: null,
-    colours: ['Sand / Black'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    images: ['sample-set.webp', 'sample-zip-jacket.webp', 'sample-biker-shorts.webp'],
-    description:
-      'The full look: Flex Zip Jacket in Sand with FF Biker Shorts in Black. Our signature set, worn by Letchance in class and on the go.',
-    details: ['Flex Zip Jacket — Sand', 'FF Biker Shorts — Black', 'Save when you buy the set'],
-    shopify: '',
     status: 'coming-soon',
-    sample: true,
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colours: [
+      { name: 'Black', images: ['sculpt-black.webp'] },
+      { name: 'Burgundy', images: ['sculpt-burgundy.webp'] },
+      { name: 'Sunset', label: 'Sunset (yellow & orange)', images: ['sculpt-sunset.webp'] },
+    ],
+    description:
+      'Our signature two-piece. A half-zip racerback sports bra with a gold Be Fit & Flex underband, paired with high-rise 7/8 leggings with contour seams and the embroidered gold FF emblem. Breathable, four-way stretch and squat-proof — it sculpts, supports and moves with you.',
+    details: ['Half-zip front for easy on and off', 'Racerback with FF emblem for full freedom of movement', 'High-rise, squat-proof 7/8 leggings with contour seams', 'Breathable, moisture-wicking four-way stretch fabric', 'Gold embroidered FF emblem'],
+    shopify: '',
+  },
+  {
+    slug: 'flex-zip-jacket-set',
+    name: 'Flex Zip Jacket Set',
+    category: 'jackets',
+    price: null,
+    status: 'coming-soon',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colours: [
+      { name: 'Sand', images: ['zip-sand-front.webp', 'zip-sand-back.webp'] },
+      { name: 'Pink', images: ['zip-pink-front.webp', 'zip-pink-back.webp'] },
+      { name: 'Teal', images: ['zip-teal-front.webp', 'zip-teal-back.webp'] },
+    ],
+    description:
+      'A second-skin zip jacket with a high collar, thumbhole cuffs and zip pockets, finished with a gold embroidered FF crest on the chest and Be Fit & Flex across the back. Paired with high-waisted black biker shorts with the gold FF emblem. From the studio to the school run.',
+    details: ['Fitted, waist-defining jacket with contour seams', 'Thumbhole cuffs and zip side pockets', 'Gold FF crest on the chest, Be Fit & Flex on the back', 'High-waisted black biker shorts with gold FF emblem', 'Soft, breathable four-way stretch fabric'],
+    shopify: '',
+  },
+  {
+    slug: 'varsity-cropped-tracksuit',
+    name: 'Varsity Cropped Tracksuit',
+    category: 'tracksuits',
+    price: null,
+    status: 'coming-soon',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colours: [
+      { name: 'Black', images: ['varsity-black.webp'] },
+      { name: 'Red', images: ['varsity-red.webp'] },
+      { name: 'White', images: ['varsity-white.webp'] },
+    ],
+    description:
+      'A cropped zip track jacket with contrast piping and a gold embroidered FF crest, matching joggers with side stripes and an elasticated waist, worn with our white Be Fit & Flex bralette with red trim. Sporty, polished and made for life on the move.',
+    details: ['Cropped zip jacket with contrast piping', 'Gold embroidered FF crest on jacket and joggers', 'Joggers with side stripes and an elasticated waistband', 'Styled with the Be Fit & Flex bralette (white with red trim)', 'Soft, breathable stretch knit'],
+    shopify: '',
+  },
+  {
+    slug: 'classic-hooded-tracksuit',
+    name: 'Classic Hooded Tracksuit',
+    category: 'tracksuits',
+    unisex: true,
+    price: null,
+    status: 'coming-soon',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colours: [
+      { name: 'Black', images: ['hooded-black-front.webp', 'hooded-black-back.webp'] },
+      { name: 'Royal Blue', images: ['hooded-blue-front.webp', 'hooded-blue-back.webp'] },
+      { name: 'White', images: ['hooded-white-front.webp', 'hooded-white-back.webp'] },
+    ],
+    description:
+      'A unisex hooded zip tracksuit with contrast piping, a gold embroidered FF crest on the chest and leg, and Be Fit & Flex in script across the back. Relaxed, breathable and made for training days, travel and everything in between.',
+    details: ['Hooded zip jacket with contrast piping', 'Be Fit & Flex script across the back', 'Gold embroidered FF crest on chest and joggers', 'Straight-leg joggers with side piping and pockets', 'Unisex fit'],
+    shopify: '',
+  },
+  {
+    slug: 'logo-racer-tank',
+    name: 'Logo Racer Tank',
+    category: 'tees',
+    price: null,
+    status: 'coming-soon',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    colours: [
+      { name: 'White', images: ['tank-white.webp'] },
+      { name: 'Black', images: ['tank-black.webp'] },
+    ],
+    description:
+      'A fitted racerback tank with a scoop neck and the bold Be Fit & Flex logo across the chest. Lightweight and breathable — layer it under a jacket or wear it on its own from workout to weekend.',
+    details: ['Fitted racerback silhouette', 'Bold Be Fit & Flex chest print', 'Lightweight, breathable stretch fabric', 'Smooth, flattering fit'],
+    shopify: '',
+  },
+  {
+    slug: 'ff-emblem-tee',
+    name: 'FF Emblem Tee',
+    category: 'tees',
+    unisex: true,
+    price: null,
+    status: 'coming-soon',
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    colours: [
+      { name: 'White', images: ['emblem-tee-white.webp'] },
+      { name: 'Black', images: ['emblem-tee-black.webp'] },
+    ],
+    description:
+      'A clean crew-neck tee with our gold embroidered FF emblem on the chest. Soft, breathable and easy to wear — the everyday essential with a touch of luxury.',
+    details: ['Gold embroidered FF emblem', 'Classic crew neck, short sleeves', 'Soft, breathable stretch cotton feel', 'Unisex fit'],
+    shopify: '',
+  },
+  {
+    slug: 'signature-logo-tee',
+    name: 'Signature Logo Tee',
+    category: 'tees',
+    unisex: true,
+    price: null,
+    status: 'coming-soon',
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    colours: [{ name: 'White', images: ['signature-tee-white.webp'] }],
+    description:
+      'A crisp white crew-neck tee with Be Fit & Flex printed boldly across the chest. Wear the movement — at the gym, on the go or at brunch.',
+    details: ['Bold centred Be Fit & Flex print', 'Classic crew neck, short sleeves', 'Soft, breathable fabric', 'Unisex fit'],
+    shopify: '',
+  },
+  {
+    slug: 'chest-logo-tee',
+    name: 'Chest Logo Tee',
+    category: 'tees',
+    unisex: true,
+    price: null,
+    status: 'coming-soon',
+    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    colours: [
+      { name: 'Black', images: ['chest-tee-black.webp'] },
+      { name: 'White', images: ['chest-tee-white.webp'] },
+    ],
+    description:
+      'A fitted crew-neck tee with a subtle Be Fit & Flex logo on the chest. Minimal, breathable and stretchy — the tee you will reach for every day.',
+    details: ['Subtle Be Fit & Flex chest logo', 'Fitted crew neck, short sleeves', 'Breathable stretch fabric', 'Unisex fit'],
+    shopify: '',
   },
 ];
 
