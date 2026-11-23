@@ -380,5 +380,5 @@ const urls = [...pages.map((p) => p[0]), ...C.products.map((p) => `products/${p.
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
 write('.nojekyll', '');
-if (process.env.CNAME) write('CNAME', process.env.CNAME + '\n');
+write('CNAME', (process.env.CNAME ?? 'befitandflex.com') + '\n');
 console.log(`Built ${pages.length + C.products.length + 1} pages → ${path.basename(OUT)}`);
