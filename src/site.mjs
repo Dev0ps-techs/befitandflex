@@ -22,8 +22,8 @@ export const site = {
   phone: '+971552630650',
   phoneDisplay: '(+971) 55 263 0650',
   whatsapp: '971552630650',
-  instagram: 'https://www.instagram.com/befitandflex/',
-  instagramHandle: '@befitandflex',
+  instagram: 'https://www.instagram.com/befitandflexwear/',
+  instagramHandle: '@befitandflexwear',
   sister: { name: 'Wealthy Mind & Body', url: 'https://wealthymindandbody.com' },
 };
 
