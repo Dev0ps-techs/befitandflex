@@ -72,6 +72,8 @@
       const tpl = $$('template[data-colour-thumbs]').find((t) => t.dataset.colourThumbs === colour);
       thumbsBox.innerHTML = tpl ? tpl.innerHTML : ''; bindThumbs();
     }));
+    const want = decodeURIComponent((location.hash.match(/c=([^&]+)/) || [])[1] || '');
+    if (want) $$('[data-colour-pick]').find((b) => b.dataset.colourPick === want)?.click();
     $$('[data-size-pick]').forEach((b) => b.addEventListener('click', () => {
       size = b.dataset.sizePick; $$('[data-size-pick]').forEach((x) => x.classList.toggle('is-on', x === b));
     }));

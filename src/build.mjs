@@ -134,19 +134,26 @@ ${drawer(r)}
 `;
 }
 
-const card = (r, p, i = 0) => `
-<article class="card" data-reveal style="--d:${(i % 4) * 0.06}s" data-cat="${p.category}">
-  <a class="card__img" href="${r}products/${p.slug}/">
-    ${pimg(r, p, 0, { sizes: '(min-width: 1000px) 25vw, 50vw' })}
-    ${p.images[1] ? pimg(r, p, 1, { sizes: '(min-width: 1000px) 25vw, 50vw', cls: 'card__alt' }) : p.colours[1] ? img(r, 'products/' + p.colours[1].images[0], `${p.name} — ${p.colours[1].name}`, { sizes: '(min-width: 1000px) 25vw, 50vw', cls: 'card__alt' }) : ''}
-    ${soon(p) ? '<span class="badge">Coming soon</span>' : ''}${p.unisex ? '<span class="badge badge--alt">Unisex</span>' : ''}
+// One card per colour: every photo is shown as its own product tile.
+const card = (r, p, i = 0, ci = 0) => {
+  const c = p.colours[ci];
+  const href = `${r}products/${p.slug}/#c=${encodeURIComponent(c.name)}`;
+  const sz = { sizes: '(min-width: 1000px) 25vw, 50vw' };
+  return `
+<article class="card" data-cat="${p.category}">
+  <a class="card__img" href="${href}">
+    ${img(r, 'products/' + c.images[0], `${p.name} — ${c.name}`, { ...sz, eager: i < 4 })}
+    ${c.images[1] ? img(r, 'products/' + c.images[1], `${p.name} — ${c.name}, back`, { ...sz, cls: 'card__alt' }) : ''}
+    ${soon(p) ? '<span class="badge">Coming soon</span>' : ''}
   </a>
   <div class="card__body">
     <p class="card__cat">${catName(p.category)}</p>
-    <h3><a href="${r}products/${p.slug}/">${p.name}</a></h3>
-    <div class="card__foot"><p class="card__price">${soon(p) ? 'Pre-order now' : price(p)}</p><span class="sws" aria-label="${p.colours.length} colours: ${esc(p.colours.map((c) => c.name).join(', '))}">${p.colours.map((c) => swatch(c.name)).join('')}</span></div>
+    <h3><a href="${href}">${p.name}</a></h3>
+    <div class="card__foot"><p class="card__price">${soon(p) ? 'Pre-order now' : price(p)}</p><span class="card__col">${swatch(c.name)}${c.name}</span></div>
   </div>
 </article>`;
+};
+const cards = (r, ps) => ps.flatMap((p) => p.colours.map((_, ci) => [p, ci])).map(([p, ci], i) => card(r, p, i, ci)).join('');
 
 const catTile = (r, c, i) => {
   const p = C.products.find((x) => x.category === c.id);
@@ -193,7 +200,7 @@ function home(r) {
 <section class="section">
   <div class="wrap">
     <div class="head" data-reveal><div><p class="kicker">The collection</p><h2>Coming soon — pre-order now</h2></div><a class="link" href="${r}shop/">Shop all ${icon('arrow')}</a></div>
-    <div class="grid">${C.products.slice(0, 8).map((p, i) => card(r, p, i)).join('')}</div>
+    <div class="grid">${C.products.map((p, i) => card(r, p, i, 0)).join('')}</div>
   </div>
 </section>
 <section class="section section--gold" id="join">
@@ -218,7 +225,7 @@ function shop(r) {
     return `<div class="block" data-cat="${c.id}" data-gender="${c.gender}" id="${c.id}">
       <div class="block__head"><div><h3 class="block__title">${c.name}</h3><p>${c.blurb}</p></div>
       <div class="block__cols"><span class="block__label">Available in</span><ul>${cols.map((n) => `<li>${swatch(n)}${n}</li>`).join('')}</ul></div></div>
-      <div class="grid">${ps.map((p, i) => card(r, p, i)).join('')}</div></div>`;
+      <div class="grid">${cards(r, ps)}</div></div>`;
   };
   return `
 <section class="page-head"><div class="wrap"><p class="kicker">Coming soon · Pre-order now</p><h1>Shop the collection</h1><p class="lead">Premium activewear that is breathable, stretchable and made for your lifestyle. Reserve your size today.</p></div></section>
@@ -264,7 +271,7 @@ function product(r, p) {
     </div>
   </div>
 </section>
-${related.length ? `<section class="section"><div class="wrap"><div class="head"><h2>Complete the look</h2></div><div class="grid">${related.map((x, i) => card(r, x, i)).join('')}</div></div></section>` : ''}`;
+${related.length ? `<section class="section"><div class="wrap"><div class="head"><h2>Complete the look</h2></div><div class="grid">${related.map((x, i) => card(r, x, i, 0)).join('')}</div></div></section>` : ''}`;
 }
 
 function drawer(r) {
