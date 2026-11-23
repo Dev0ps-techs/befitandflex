@@ -99,8 +99,8 @@ export const products = [
     status: 'coming-soon',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colours: [
-      { name: 'Black', images: ['varsity-black.webp'] },
       { name: 'Red', images: ['varsity-red.webp'] },
+      { name: 'Black', images: ['varsity-black.webp'] },
       { name: 'White', images: ['varsity-white.webp'] },
     ],
     description:
