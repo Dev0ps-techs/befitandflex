@@ -142,6 +142,21 @@ export const products = [
     shopify: '',
   },
   {
+    slug: 'chest-logo-tee',
+    name: 'Chest Logo Tee',
+    category: 'men-tees',
+    price: null,
+    status: 'coming-soon',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colours: [
+      { name: 'White', images: ['chest-tee-white.webp'] },
+      { name: 'Black', images: ['chest-tee-black.webp'] },
+    ],
+    description:
+      'A fitted men’s crew-neck tee with a subtle Be Fit & Flex logo on the chest. Minimal, breathable and stretchy — the tee you will reach for every day.',
+    details: ['Subtle Be Fit & Flex chest logo', 'Fitted crew neck, short sleeves', 'Breathable stretch fabric', 'Regular men’s fit'],
+    shopify: '',
+  },  {
     slug: 'ff-emblem-tee',
     name: 'FF Emblem Tee',
     category: 'men-tees',
@@ -170,22 +185,7 @@ export const products = [
     details: ['Bold centred Be Fit & Flex print', 'Classic crew neck, short sleeves', 'Soft, breathable fabric', 'Regular men’s fit'],
     shopify: '',
   },
-  {
-    slug: 'chest-logo-tee',
-    name: 'Chest Logo Tee',
-    category: 'men-tees',
-    price: null,
-    status: 'coming-soon',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colours: [
-      { name: 'Black', images: ['chest-tee-black.webp'] },
-      { name: 'White', images: ['chest-tee-white.webp'] },
-    ],
-    description:
-      'A fitted men’s crew-neck tee with a subtle Be Fit & Flex logo on the chest. Minimal, breathable and stretchy — the tee you will reach for every day.',
-    details: ['Subtle Be Fit & Flex chest logo', 'Fitted crew neck, short sleeves', 'Breathable stretch fabric', 'Regular men’s fit'],
-    shopify: '',
-  },
+
 ];
 
 export const home = {
