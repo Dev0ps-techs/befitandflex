@@ -7,7 +7,7 @@ export const site = {
   url: 'https://befitandflex.com',
   tagline: 'Activewear for women who move with intention.',
   description:
-    'Be Fit & Flex is a premium activewear brand for women 30+, designed by Mindset & Wellness Coach Letchance Ngassa. Sculpting leggings, shorts, jackets and sets made for yoga, training and everyday life.',
+    'Be Fit & Flex: premium activewear for women and men who are driven, ambitious and unapologetically themselves. Breathable, stretchy and flexible pieces that combine style, comfort and performance.',
   founder: 'Letchance Ngassa',
   currency: 'AED',
   // Shopify: paste your store address here once it is live (e.g. https://befitandflex.myshopify.com).
@@ -189,9 +189,14 @@ export const products = [
 ];
 
 export const home = {
-  heroTitle: 'Move with intention.',
-  heroText:
-    'Premium activewear designed for women 30+ who are strong, busy and unapologetically themselves. Made to stretch, sculpt and keep up with your life.',
+  heroTitle: 'Move in style.',
+  heroSub: 'Be fit. Be flexible. Be confident.',
+  heroText: [
+    'Premium activewear designed for women and men who are driven, ambitious and unapologetically themselves.',
+    '<b>Be Fit &amp; Flex</b> brings you breathable, stretchy and flexible activewear that combines style, comfort and performance to complement your lifestyle.',
+    'Whether you’re working out, running errands or enjoying your everyday activities, our stylish, body-enhancing designs help you look good, feel great and let your confidence shine through.',
+  ],
+  heroTagline: 'Dress in style. Move with confidence. Fit your lifestyle.',
   premiumTitle: 'Premium activewear, made for life.',
   premiumText: 'Every piece is cut from soft, high-performance fabric that breathes with you, stretches with you and looks just as good at brunch as it does on the mat.',
   values: [

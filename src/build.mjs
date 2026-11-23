@@ -173,7 +173,8 @@ function home(r) {
     <div class="hero__text">
       <p class="kicker" data-reveal>Premium activewear · Coming soon</p>
       <h1 data-reveal style="--d:.08s">${H.heroTitle}</h1>
-      <p class="lead" data-reveal style="--d:.16s">${H.heroText}</p>
+      <p class="hero__sub" data-reveal style="--d:.12s">${H.heroSub}</p>
+      <div class="hero__copy" data-reveal style="--d:.16s">${H.heroText.map((t) => `<p>${t}</p>`).join('')}<p class="hero__tagline">${H.heroTagline}</p></div>
       <ul class="hero__pills" data-reveal style="--d:.2s"><li>${icon('wind')}Breathable</li><li>${icon('swap')}Four-way stretch</li><li>${icon('heart')}Fit for lifestyle</li></ul>
       <div class="row" data-reveal style="--d:.24s"><a class="btn btn--gold" href="${r}shop/"><span>Pre-order the collection</span>${icon('arrow')}</a><a class="btn btn--ghost" href="#join"><span>Get early access</span></a></div>
     </div>
