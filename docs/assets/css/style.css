@@ -338,3 +338,9 @@ details p { margin: 12px 0 0; }
 .announce__social .icon { width: 15px; height: 15px; color: var(--gold); }
 @media (max-width: 1180px) { .announce__social span { display: none; } .announce__social .icon { width: 17px; height: 17px; } .announce__social { gap: 14px; } }
 @media (max-width: 560px) { .announce__msg { font-size: .64rem; letter-spacing: .06em; } }
+
+/* SEO intro on the home page */
+.seo-intro { text-align: center; }
+.seo-intro h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.seo-intro p { color: var(--muted); }
+.seo-intro a { color: var(--gold-deep); }

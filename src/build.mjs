@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as C from './site.mjs';
+import { createHash } from 'node:crypto';
+const ASSET_V = createHash('md5').update(fs.readFileSync(new URL('./assets/css/style.css', import.meta.url))).update(fs.readFileSync(new URL('./assets/js/main.js', import.meta.url))).digest('hex').slice(0, 8);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SRC = __dirname;
@@ -29,7 +31,7 @@ function img(r, file, alt = '', { sizes = '100vw', eager = false, cls = '' } = {
   return `<img src="${r}assets/img/${file}"${srcset} width="${w}" height="${h}" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
 for (const p of C.products) p.images = p.colours[0].images;
-const pimg = (r, p, i = 0, opts) => img(r, 'products/' + p.images[i], `${p.name} — ${p.colours[0].name}`, opts);
+const pimg = (r, p, i = 0, opts) => img(r, 'products/' + p.images[i], altFor(p, p.colours[0].name, i ? ', back view' : ''), opts);
 const price = (p) => (p.price ? `${Number(p.price).toFixed(2)} ${site.currency}` : 'Coming soon');
 const soon = (p) => p.status === 'coming-soon';
 const hex = (n) => C.colourHex[n] || '#ccc';
@@ -40,6 +42,7 @@ const newsForm = (id, dark = true) => `<form class="news${dark ? '' : ' news--li
 const catOf = (id) => C.categories.find((c) => c.id === id) || {};
 const gName = (g) => (C.genders.find((x) => x.id === g) || {}).name || '';
 const catName = (id) => { const c = catOf(id); return c.name ? `${gName(c.gender)} · ${c.name}` : ''; };
+const altFor = (p, colour, extra = '') => `${p.name} in ${colour}${extra} — ${gName(catOf(p.category).gender)}'s ${catOf(p.category).name.toLowerCase()} by Be Fit & Flex activewear Dubai`;
 const buyUrl = (p) => p.shopify || (site.shopifyStore ? site.shopifyStore.replace(/\/$/, '') + '/products/' + p.slug : '');
 
 const I = {
@@ -71,8 +74,10 @@ const NAV = [
   ['help/', 'Help', 'help'],
 ];
 
-function layout({ r, title, key = '', body, desc = site.description, ogImg = 'hero-tree-pose.webp', base = '' }) {
-  const t = title ? `${title} · ${site.name}` : `${site.name} — ${site.tagline}`;
+function layout({ r, title, key = '', body, desc = site.description, ogImg = 'hero-tree-pose.webp', base = '', fullTitle = '', path: pth = '', ld = [], noindex = false, ogType = 'website', keywords = [] }) {
+  const t = fullTitle || (title ? `${title} | ${site.name}` : `${site.name} — ${site.tagline}`);
+  const canon = site.url + '/' + pth;
+  const kw = [...new Set([...keywords, ...C.seo.keywords])].join(', ');
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -81,16 +86,30 @@ function layout({ r, title, key = '', body, desc = site.description, ogImg = 'he
 ${base ? `<base href="${base}">` : ''}
 <title>${esc(t)}</title>
 <meta name="description" content="${esc(desc)}">
+<meta name="keywords" content="${esc(kw)}">
+<meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}">
+${noindex ? '' : `<link rel="canonical" href="${canon}">`}
+<meta name="author" content="${site.name}">
+<meta name="geo.region" content="AE-DU"><meta name="geo.placename" content="Dubai">
 <meta name="theme-color" content="#0b0b0b">
+<meta property="og:site_name" content="${site.name}">
+<meta property="og:type" content="${ogType}">
+<meta property="og:locale" content="en_AE">
+<meta property="og:url" content="${canon}">
 <meta property="og:title" content="${esc(t)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:image" content="${site.url}/assets/img/${ogImg}">
+<meta property="og:image:alt" content="${esc(t)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(t)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="${site.url}/assets/img/${ogImg}">
+${ld.map((x) => `<script type="application/ld+json">${JSON.stringify(x).replace(/</g, '\\u003c')}</script>`).join('\n')}
 <link rel="icon" href="${r}assets/img/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="${r}assets/img/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${r}assets/css/style.css">
+<link rel="stylesheet" href="${r}assets/css/style.css?v=${ASSET_V}">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -140,7 +159,7 @@ ${body}
 ${drawer(r)}
 <div class="toast" role="status" aria-live="polite"></div>
 <script>window.BFF=${JSON.stringify({ wa: site.whatsapp, email: site.email, endpoint: site.formEndpoint, currency: site.currency, root: r })}</script>
-<script src="${r}assets/js/main.js" defer></script>
+<script src="${r}assets/js/main.js?v=${ASSET_V}" defer></script>
 </body>
 </html>
 `;
@@ -154,8 +173,8 @@ const card = (r, p, i = 0, ci = 0) => {
   return `
 <article class="card" data-cat="${p.category}">
   <a class="card__img" href="${href}">
-    ${img(r, 'products/' + c.images[0], `${p.name} — ${c.name}`, { ...sz, eager: i < 4 })}
-    ${c.images[1] ? img(r, 'products/' + c.images[1], `${p.name} — ${c.name}, back`, { ...sz, cls: 'card__alt' }) : ''}
+    ${img(r, 'products/' + c.images[0], altFor(p, c.name), { ...sz, eager: i < 4 })}
+    ${c.images[1] ? img(r, 'products/' + c.images[1], altFor(p, c.name, ', back view'), { ...sz, cls: 'card__alt' }) : ''}
     ${soon(p) ? '<span class="badge">Coming soon</span>' : ''}
   </a>
   <div class="card__body">
@@ -220,6 +239,13 @@ function home(r) {
   <div class="wrap join" data-reveal>
     <div><p class="kicker kicker--ink">Early access</p><h2>Be the first to wear it.</h2><p>${H.comingSoon}</p></div>
     <div>${newsForm('news-home', false)}<p class="small small--ink">No spam — just launch news, restocks and members-only offers. Unsubscribe any time.</p></div>
+  </div>
+</section>
+<section class="section section--tight seo-intro">
+  <div class="wrap narrow" data-reveal>
+    <h2>Premium activewear in Dubai &amp; the UAE</h2>
+    <p>Be Fit &amp; Flex is a Dubai activewear brand for <a href="${r}shop/#women">women</a> and <a href="${r}shop/#men">men</a> who want gym wear that looks as good as it performs. Our breathable, four-way stretch fabrics are made for training, yoga, running errands and everyday athleisure.</p>
+    <p>Shop matching <a href="${r}shop/#women-sets">sports bra and leggings sets</a>, fitted <a href="${r}shop/#women-jackets">zip jackets with biker shorts</a>, embroidered <a href="${r}shop/#women-tracksuits">women’s tracksuits</a> and <a href="${r}shop/#women-tanks">tank tops</a>, plus <a href="${r}shop/#men-tracksuits">men’s hooded tracksuits</a> and <a href="${r}shop/#men-tees">gym T-shirts</a>. Our first collection is coming soon: pre-order now to reserve your size, with delivery across the UAE.</p>
   </div>
 </section>
 <section class="section">
@@ -370,14 +396,45 @@ const pages = [
   ['size-guide/index.html', 'Size Guide', 'size', sizeGuide],
   ['help/index.html', 'Help', 'help', help],
 ];
-for (const [rel, title, key, fn] of pages) { const r = rootFor(rel); write(rel, layout({ r, title, key, body: fn(r) })); }
-for (const p of C.products) {
-  const rel = `products/${p.slug}/index.html`; const r = rootFor(rel);
-  write(rel, layout({ r, title: p.name, key: 'shop', body: product(r, p), desc: p.description, ogImg: 'products/' + p.images[0] }));
+const org = {
+  '@context': 'https://schema.org', '@type': 'ClothingStore', '@id': site.url + '/#store', name: site.name, alternateName: ['Be Fit and Flex', 'BeFitAndFlex'],
+  url: site.url + '/', logo: site.url + '/assets/img/icon-512.png', image: site.url + '/assets/img/hero-tree-pose.webp', description: site.description,
+  email: site.email, telephone: site.phone, founder: { '@type': 'Person', name: site.founder },
+  address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' }, areaServed: 'AE',
+  sameAs: [site.instagram, site.sister.url],
+};
+const webSite = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': site.url + '/#website', name: site.name, url: site.url + '/', publisher: { '@id': site.url + '/#store' } };
+const crumbs = (items) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map(([name, u], i) => ({ '@type': 'ListItem', position: i + 1, name, item: site.url + '/' + u })) });
+const pageSeo = { home: C.seo.home, shop: C.seo.shop, about: C.seo.about, size: C.seo.size, help: C.seo.help };
+for (const [rel, title, key, fn] of pages) {
+  const r = rootFor(rel); const pth = rel.replace(/index\.html$/, ''); const S = pageSeo[key] || {};
+  const ld = key === 'home' ? [org, webSite] : key === 'shop'
+    ? [crumbs([['Home', ''], ['Shop', 'shop/']]), { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Be Fit & Flex activewear collection', itemListElement: C.products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${site.url}/products/${p.slug}/`, name: p.name })) }]
+    : [crumbs([['Home', ''], [title, pth]])];
+  write(rel, layout({ r, title, key, body: fn(r), fullTitle: S.title, desc: S.description || site.description, path: pth, ld }));
 }
-write('404.html', layout({ r: '', base: BASE, title: 'Not found', body: notFound('') }));
-const urls = [...pages.map((p) => p[0]), ...C.products.map((p) => `products/${p.slug}/index.html`)].map((u) => site.url + '/' + u.replace(/index\.html$/, ''));
-write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+for (const p of C.products) {
+  const rel = `products/${p.slug}/index.html`; const r = rootFor(rel); const pth = `products/${p.slug}/`;
+  const cat = catOf(p.category); const g = gName(cat.gender); const cols = p.colours.map((c) => c.name);
+  const fullTitle = `${p.name} – ${g}'s ${cat.name} in ${cols.join(', ')} | Be Fit & Flex Activewear Dubai`;
+  const desc = `${p.name} by Be Fit & Flex: ${g.toLowerCase()}'s ${cat.name.toLowerCase()} in ${cols.join(', ')}. ${p.description}`.slice(0, 300).replace(/\s+\S*$/, '') + '…';
+  const keywords = [`${p.name}`, `${g.toLowerCase()} ${cat.name.toLowerCase()} Dubai`, `${g.toLowerCase()} ${cat.name.toLowerCase()} UAE`, ...cols.map((c) => `${c.toLowerCase()} ${cat.name.toLowerCase().replace(/s$/, '')}`)];
+  const productLd = {
+    '@context': 'https://schema.org', '@type': 'ProductGroup', name: p.name, description: p.description, url: site.url + '/' + pth, productGroupID: p.slug,
+    brand: { '@type': 'Brand', name: site.name }, category: `${g} > ${cat.name}`, audience: { '@type': 'PeopleAudience', suggestedGender: cat.gender === 'men' ? 'male' : 'female' },
+    variesBy: ['https://schema.org/color', 'https://schema.org/size'],
+    image: p.colours.flatMap((c) => c.images.map((im) => `${site.url}/assets/img/products/${im}`)),
+    hasVariant: p.colours.map((c) => ({ '@type': 'Product', name: `${p.name} – ${c.name}`, color: c.name, sku: `${p.slug}-${c.name.toLowerCase().replace(/\W+/g, '-')}`, image: `${site.url}/assets/img/products/${c.images[0]}`, url: `${site.url}/${pth}#c=${encodeURIComponent(c.name)}` })),
+  };
+  write(rel, layout({ r, title: p.name, key: 'shop', body: product(r, p), fullTitle, desc, path: pth, ogType: 'product', keywords, ogImg: 'products/' + p.images[0], ld: [productLd, crumbs([['Home', ''], ['Shop', 'shop/'], [`${g}'s ${cat.name}`, `shop/#${cat.id}`], [p.name, pth]])] }));
+}
+write('404.html', layout({ r: '', base: BASE, title: 'Page not found', body: notFound(''), noindex: true }));
+const today = new Date().toISOString().slice(0, 10);
+const smEntries = [
+  ...pages.map(([rel, , key]) => ({ loc: site.url + '/' + rel.replace(/index\.html$/, ''), pri: key === 'home' ? '1.0' : key === 'shop' ? '0.9' : '0.5', imgs: key === 'home' ? ['hero-tree-pose.webp'] : [] })),
+  ...C.products.map((p) => ({ loc: `${site.url}/products/${p.slug}/`, pri: '0.8', imgs: p.colours.flatMap((c) => c.images.map((im) => 'products/' + im)) })),
+];
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${smEntries.map((e) => `  <url><loc>${e.loc}</loc><lastmod>${today}</lastmod><priority>${e.pri}</priority>${e.imgs.map((im) => `<image:image><image:loc>${site.url}/assets/img/${im}</image:loc></image:image>`).join('')}</url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
 write('.nojekyll', '');
 write('CNAME', (process.env.CNAME ?? 'befitandflex.com') + '\n');

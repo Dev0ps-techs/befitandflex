@@ -27,6 +27,37 @@ export const site = {
   sister: { name: 'Wealthy Mind & Body', url: 'https://wealthymindandbody.com' },
 };
 
+// Search engine optimisation: page titles, descriptions and keywords.
+export const seo = {
+  keywords: [
+    'Be Fit & Flex', 'Be Fit and Flex', 'befitandflex', 'activewear Dubai', 'activewear UAE', 'premium activewear',
+    'women activewear Dubai', 'men activewear Dubai', 'gym wear Dubai', 'workout clothes UAE', 'yoga wear Dubai',
+    'sports bra and leggings set', 'matching gym set', 'zip jacket activewear', 'women tracksuit Dubai', 'men tracksuit Dubai',
+    'hooded tracksuit', 'gym t-shirt', 'tank top women', 'breathable activewear', 'stretchy activewear', 'squat-proof leggings',
+    'athleisure Dubai', 'fitness clothing UAE', 'luxury activewear', 'pre-order activewear',
+  ],
+  home: {
+    title: 'Be Fit & Flex | Premium Activewear for Women & Men in Dubai, UAE',
+    description: 'Shop Be Fit & Flex premium activewear in Dubai & the UAE: breathable, stretchy gym sets, sports bras, leggings, zip jackets, tracksuits, tees and tanks for women and men. Pre-order now.',
+  },
+  shop: {
+    title: "Shop Women's & Men's Activewear | Gym Sets, Tracksuits & Tees | Be Fit & Flex Dubai",
+    description: "Shop the Be Fit & Flex collection: women's sculpt sets, zip jackets, tracksuits and tank tops, plus men's hooded tracksuits and T-shirts. Breathable, stretchy activewear in Dubai, UAE.",
+  },
+  about: {
+    title: 'Our Story | Be Fit & Flex Activewear, Designed in Dubai',
+    description: 'Be Fit & Flex is a premium activewear brand from Dubai, created by Mindset & Wellness Coach Letchance Ngassa: style, comfort and performance for your lifestyle.',
+  },
+  size: {
+    title: 'Size Guide | Be Fit & Flex Activewear',
+    description: 'Find your perfect fit with the Be Fit & Flex size guide for women’s and men’s activewear: bust, waist and hip measurements in centimetres.',
+  },
+  help: {
+    title: 'Help, Delivery & Returns | Be Fit & Flex Activewear UAE',
+    description: 'Delivery across the UAE, pre-orders, returns and care for your Be Fit & Flex activewear. Contact us on WhatsApp, Instagram or email.',
+  },
+};
+
 export const genders = [
   { id: 'women', name: 'Women' },
   { id: 'men', name: 'Men' },

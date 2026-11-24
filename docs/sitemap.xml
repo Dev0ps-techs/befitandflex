@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://befitandflex.com/</loc></url>
-  <url><loc>https://befitandflex.com/shop/</loc></url>
-  <url><loc>https://befitandflex.com/about/</loc></url>
-  <url><loc>https://befitandflex.com/size-guide/</loc></url>
-  <url><loc>https://befitandflex.com/help/</loc></url>
-  <url><loc>https://befitandflex.com/products/sculpt-set/</loc></url>
-  <url><loc>https://befitandflex.com/products/flex-zip-jacket-set/</loc></url>
-  <url><loc>https://befitandflex.com/products/varsity-cropped-tracksuit/</loc></url>
-  <url><loc>https://befitandflex.com/products/classic-hooded-tracksuit/</loc></url>
-  <url><loc>https://befitandflex.com/products/logo-racer-tank/</loc></url>
-  <url><loc>https://befitandflex.com/products/chest-logo-tee/</loc></url>
-  <url><loc>https://befitandflex.com/products/ff-emblem-tee/</loc></url>
-  <url><loc>https://befitandflex.com/products/signature-logo-tee/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://befitandflex.com/</loc><lastmod>2026-11-24</lastmod><priority>1.0</priority><image:image><image:loc>https://befitandflex.com/assets/img/hero-tree-pose.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/shop/</loc><lastmod>2026-11-24</lastmod><priority>0.9</priority></url>
+  <url><loc>https://befitandflex.com/about/</loc><lastmod>2026-11-24</lastmod><priority>0.5</priority></url>
+  <url><loc>https://befitandflex.com/size-guide/</loc><lastmod>2026-11-24</lastmod><priority>0.5</priority></url>
+  <url><loc>https://befitandflex.com/help/</loc><lastmod>2026-11-24</lastmod><priority>0.5</priority></url>
+  <url><loc>https://befitandflex.com/products/sculpt-set/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/sculpt-black.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/sculpt-burgundy.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/sculpt-sunset.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/flex-zip-jacket-set/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/zip-sand-front.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/zip-sand-back.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/zip-pink-front.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/zip-pink-back.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/zip-teal-front.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/zip-teal-back.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/varsity-cropped-tracksuit/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/varsity-red.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/varsity-black.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/varsity-white.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/classic-hooded-tracksuit/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/hooded-black-front.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/hooded-black-back.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/hooded-blue-front.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/hooded-blue-back.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/hooded-white-front.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/hooded-white-back.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/logo-racer-tank/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/tank-white.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/tank-black.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/chest-logo-tee/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/chest-tee-white.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/chest-tee-black.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/ff-emblem-tee/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/emblem-tee-white.webp</image:loc></image:image><image:image><image:loc>https://befitandflex.com/assets/img/products/emblem-tee-black.webp</image:loc></image:image></url>
+  <url><loc>https://befitandflex.com/products/signature-logo-tee/</loc><lastmod>2026-11-24</lastmod><priority>0.8</priority><image:image><image:loc>https://befitandflex.com/assets/img/products/signature-tee-white.webp</image:loc></image:image></url>
 </urlset>
