@@ -241,13 +241,6 @@ function home(r) {
     <div>${newsForm('news-home', false)}<p class="small small--ink">No spam — just launch news, restocks and members-only offers. Unsubscribe any time.</p></div>
   </div>
 </section>
-<section class="section section--tight seo-intro">
-  <div class="wrap narrow" data-reveal>
-    <h2>Premium activewear in Dubai &amp; the UAE</h2>
-    <p>Be Fit &amp; Flex is a Dubai activewear brand for <a href="${r}shop/#women">women</a> and <a href="${r}shop/#men">men</a> who want gym wear that looks as good as it performs. Our breathable, four-way stretch fabrics are made for training, yoga, running errands and everyday athleisure.</p>
-    <p>Shop matching <a href="${r}shop/#women-sets">sports bra and leggings sets</a>, fitted <a href="${r}shop/#women-jackets">zip jackets with biker shorts</a>, embroidered <a href="${r}shop/#women-tracksuits">women’s tracksuits</a> and <a href="${r}shop/#women-tanks">tank tops</a>, plus <a href="${r}shop/#men-tracksuits">men’s hooded tracksuits</a> and <a href="${r}shop/#men-tees">gym T-shirts</a>. Our first collection is coming soon: pre-order now to reserve your size, with delivery across the UAE.</p>
-  </div>
-</section>
 <section class="section">
   <div class="wrap split">
     <div class="split__img" data-reveal>${img(r, 'hero-tree-pose.webp', 'Letchance Ngassa, founder of Be Fit & Flex', { sizes: '(min-width: 900px) 40vw, 90vw' })}</div>
