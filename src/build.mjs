@@ -90,6 +90,7 @@ ${base ? `<base href="${base}">` : ''}
 <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}">
 ${noindex ? '' : `<link rel="canonical" href="${canon}">`}
 <meta name="author" content="${site.name}">
+<meta name="google-site-verification" content="Tp7XyHfa5y0ua4FPEa4trc2K1YreXOXsH6O2D6NE2oU">
 <meta name="geo.region" content="AE-DU"><meta name="geo.placename" content="Dubai">
 <meta name="theme-color" content="#0b0b0b">
 <meta property="og:site_name" content="${site.name}">
