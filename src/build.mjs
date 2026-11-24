@@ -429,7 +429,8 @@ const smEntries = [
   ...C.products.map((p) => ({ loc: `${site.url}/products/${p.slug}/`, pri: '0.8', imgs: p.colours.flatMap((c) => c.images.map((im) => 'products/' + im)) })),
 ];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${smEntries.map((e) => `  <url><loc>${e.loc}</loc><lastmod>${today}</lastmod><priority>${e.pri}</priority>${e.imgs.map((im) => `<image:image><image:loc>${site.url}/assets/img/${im}</image:loc></image:image>`).join('')}</url>`).join('\n')}\n</urlset>\n`);
-write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
+write('sitemap.txt', smEntries.map((e) => e.loc).join('\n') + '\n');
+write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\nSitemap: ${site.url}/sitemap.txt\n`);
 write('.nojekyll', '');
 write('CNAME', (process.env.CNAME ?? 'befitandflex.com') + '\n');
 console.log(`Built ${pages.length + C.products.length + 1} pages → ${path.basename(OUT)}`);
